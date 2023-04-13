@@ -12,9 +12,11 @@
 
 #include "libft.h"
 #include <stdio.h>
-void ft_lstadd_back(t_list **lst, t_list *new)
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
+
 	tmp = ft_lstlast(*lst);
 	if (!tmp)
 	{
@@ -24,16 +26,3 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 	else if (new)
 		tmp->next = new;
 }
-
-// int main()
-// {
-// 	t_list **home = malloc(sizeof(t_list));
-// 	t_list *a = malloc(sizeof(t_list));
-// 	t_list *b = malloc(sizeof(t_list));
-// 	(*home)->next = a;
-// 	a->next = b;
-// 	b->next = NULL;
-
-// 	ft_lstadd_back(home, ft_lstnew((void*)1));
-// 	printf("%p\n", b->next);
-// }

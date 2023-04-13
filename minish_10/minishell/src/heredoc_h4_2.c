@@ -23,15 +23,15 @@ char	*ft_get_env(char *env_name, int dlr)
 
 	i = 0;
 	if (!ft_strncmp(env_name, "$?", 2) && dlr)
-		return (ft_itoa(t_glob->exit_status));
+		return (ft_itoa(g_glob->exit_status));
 	if (!ft_strncmp(env_name, "$\0", 2) && dlr)
 		return ("$");
-	while (t_glob->envp[i] != NULL)
+	while (g_glob->envp[i] != NULL)
 	{
-		tmp = t_glob->envp[i];
+		tmp = g_glob->envp[i];
 		len = ft_strlen(env_name + dlr);
 		if (!ft_strncmp(env_name + dlr, tmp, len) && tmp[len] == '=')
-			return (t_glob->envp[i] + ft_strlen(env_name + dlr) + 1);
+			return (g_glob->envp[i] + ft_strlen(env_name + dlr) + 1);
 		i++;
 	}
 	return ("");

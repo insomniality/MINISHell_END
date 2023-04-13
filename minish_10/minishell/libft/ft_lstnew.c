@@ -12,13 +12,12 @@
 
 #include "libft.h"
 
-t_list *ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	t_list	*NEW;
+	t_list	*new;
 
-	NEW = (t_list *)malloc(sizeof(t_list));
-	NEW->content = content;
-	NEW->next = NULL;
-
-	return (NEW);
+	new = (t_list *)malloc(sizeof(t_list));
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

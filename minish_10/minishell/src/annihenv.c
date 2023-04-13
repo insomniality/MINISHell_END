@@ -35,7 +35,7 @@ void	annihenv_p2_2(char ****str)
 	&& ((**str)[1][1] == ' ' || (**str)[1][2] == '\"')))
 	{
 		free((**str)[1]);
-		(**str)[1] = ft_itoa(t_glob->exit_status);
+		(**str)[1] = ft_itoa(g_glob->exit_status);
 	}
 	else
 	{

@@ -15,12 +15,6 @@
 
 # define NOT_IN_ENV -2
 
-// typedef struct s_cmd
-// {
-// 	char	*cmd_name;
-// 	char	*args;
-// }				t_cmd;
-
 typedef struct s_cmds
 {
 	int		inp;
@@ -31,21 +25,19 @@ typedef struct s_cmds
 
 }				t_cmds;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	// int		errstat;
 	t_cmds			*t_cmnds;
 	char			**envp;
 	char			**exportp;
 	unsigned char	exit_status;
 }				t_data;
 
-t_data			*t_glob;
+t_data			*g_glob;
 
 void			fill_env(char **envp, t_data **data);
 void			pwd(t_data *data);
 int				cd(char **new_path, t_data *data);
-//void			fill_env(const char **envp, t_data *data);
 int				env(t_data *data);
 int				echo(char **text, t_data *data);
 int				export(char **text, t_data *data);
@@ -73,9 +65,5 @@ char			*concat_with_free(char *s1, char *s2);
 char			**get_argv(char **argv);
 int				is_valid_export_arg_for_env(char *text);
 int				is_valid_export_arg_for_export(char *text);
-
-
-
-
 
 #endif

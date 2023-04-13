@@ -66,11 +66,11 @@ void	main_while(void)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_glob = (t_data *)malloc(sizeof(t_data));
-	t_glob->exit_status = 0;
-	fill_env(envp, &t_glob);
+	g_glob = (t_data *)malloc(sizeof(t_data));
+	g_glob->exit_status = 0;
+	fill_env(envp, &g_glob);
 	define_signals();
 	main_while();
-	free_ar((void **)t_glob->envp);
-	free(t_glob);
+	free_ar((void **)g_glob->envp);
+	free(g_glob);
 }

@@ -69,7 +69,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		y;
 	char	*trm;
 	int		i;
-	
 
 	if (!s1 || !set)
 		return (0);

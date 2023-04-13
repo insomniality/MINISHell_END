@@ -66,7 +66,7 @@ int	wait_for_heredoc(int pid)
 	signaled = WEXITSTATUS(status);
 	if (signaled)
 		ft_putstr_fd("\n", 1);
-	t_glob->exit_status = signaled;
+	g_glob->exit_status = signaled;
 	if (signaled)
 		return (1);
 	else

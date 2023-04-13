@@ -19,15 +19,15 @@ void	redir_p2_less(char const *s, char *fname, int *x, int cmdi)
 {
 	if (s[x[1]] != '\0' && s[x[1]] == '<' && s[x[1] + 1] != '<')
 	{
-		if (t_glob->t_cmnds[cmdi].inp != 0)
-			close(t_glob->t_cmnds[cmdi].inp);
-		t_glob->t_cmnds[cmdi].inp = open(fname, O_RDONLY, 0644);
+		if (g_glob->t_cmnds[cmdi].inp != 0)
+			close(g_glob->t_cmnds[cmdi].inp);
+		g_glob->t_cmnds[cmdi].inp = open(fname, O_RDONLY, 0644);
 	}
 	if (s[x[1]] != '\0' && s[x[1]] == '<' && s[x[1] + 1] == '<')
 	{
-		if (t_glob->t_cmnds[cmdi].inp != 0)
-			close(t_glob->t_cmnds[cmdi].inp);
-		t_glob->t_cmnds[cmdi].inp = heredoc(fname);
+		if (g_glob->t_cmnds[cmdi].inp != 0)
+			close(g_glob->t_cmnds[cmdi].inp);
+		g_glob->t_cmnds[cmdi].inp = heredoc(fname);
 	}	
 }
 
@@ -35,16 +35,16 @@ void	redir_p2_more(char const *s, char *fname, int *x, int cmdi)
 {
 	if (s[x[1]] != '\0' && s[x[1]] == '>' && s[x[1] + 1] != '>')
 	{
-		if (t_glob->t_cmnds[cmdi].out != 1)
-			close(t_glob->t_cmnds[cmdi].out);
-		t_glob->t_cmnds[cmdi].out = open(fname, \
+		if (g_glob->t_cmnds[cmdi].out != 1)
+			close(g_glob->t_cmnds[cmdi].out);
+		g_glob->t_cmnds[cmdi].out = open(fname, \
 		O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	}
 	if (s[x[1]] != '\0' && s[x[1]] == '>' && s[x[1] + 1] == '>')
 	{
-		if (t_glob->t_cmnds[cmdi].out != 1)
-			close(t_glob->t_cmnds[cmdi].out);
-		t_glob->t_cmnds[cmdi].out = open(fname, \
+		if (g_glob->t_cmnds[cmdi].out != 1)
+			close(g_glob->t_cmnds[cmdi].out);
+		g_glob->t_cmnds[cmdi].out = open(fname, \
 		O_CREAT | O_APPEND | O_WRONLY, 0644);
 	}
 }
@@ -85,7 +85,7 @@ void	redir(char const *s, char *c, int *x, int cmdi)
 	redir_p1(s, c, x, &fname);
 	redir_p2_more(s, fname, x, cmdi);
 	redir_p2_less(s, fname, x, cmdi);
-	if (t_glob->t_cmnds[cmdi].inp == -1 || t_glob->t_cmnds[cmdi].out == -1)
+	if (g_glob->t_cmnds[cmdi].inp == -1 || g_glob->t_cmnds[cmdi].out == -1)
 	{
 		ft_putstr_fd("bash: ", 2);
 		ft_putstr_fd(fname, 2);

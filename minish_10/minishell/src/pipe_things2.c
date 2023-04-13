@@ -26,7 +26,7 @@ void	m_pipe_p5_fr1(int pipn, int ***fd, char **txt, int **pid)
 	free((*txt));
 	free((*pid));
 	free_ar((void **)(*fd));
-	free(t_glob->t_cmnds);
+	free(g_glob->t_cmnds);
 }
 
 void	m_pipe_p4_c1(int pipn, int ***fd)
@@ -46,15 +46,15 @@ void	m_pipe_p4_c1(int pipn, int ***fd)
 
 void	m_pipe_p3_f2(int pipn, int *j)
 {
-	if (!(is_builtin(t_glob->t_cmnds[(*j)].cmd[0], \
-	t_glob->t_cmnds[(*j)].cmd[0], t_glob)))
+	if (!(is_builtin(g_glob->t_cmnds[(*j)].cmd[0], \
+	g_glob->t_cmnds[(*j)].cmd[0], g_glob)))
 	{
-		search(&(t_glob->t_cmnds[(*j)].cmd[0]), getenv("PATH"));
-		execve(t_glob->t_cmnds[(*j)].cmd[0], t_glob->t_cmnds[(*j)].cmd, 0);
+		search(&(g_glob->t_cmnds[(*j)].cmd[0]), getenv("PATH"));
+		execve(g_glob->t_cmnds[(*j)].cmd[0], g_glob->t_cmnds[(*j)].cmd, 0);
 	}
 	else
-		builtin_exec(t_glob->t_cmnds[(*j)].cmd[0], \
-		t_glob->t_cmnds[(*j)].cmd, t_glob);
+		builtin_exec(g_glob->t_cmnds[(*j)].cmd[0], \
+		g_glob->t_cmnds[(*j)].cmd, g_glob);
 	exit(1);
 }
 
@@ -63,14 +63,14 @@ void	m_pipe_p3_f1(int pipn, int *j, int ***fd)
 	int	i;
 
 	i = 0;
-	if (t_glob->t_cmnds[(*j)].inp == -1 || t_glob->t_cmnds[(*j)].out == -1)
+	if (g_glob->t_cmnds[(*j)].inp == -1 || g_glob->t_cmnds[(*j)].out == -1)
 		exit (1);
-	if (t_glob->t_cmnds[(*j)].out != 1)
-		dup2(t_glob->t_cmnds[(*j)].out, STDOUT_FILENO);
+	if (g_glob->t_cmnds[(*j)].out != 1)
+		dup2(g_glob->t_cmnds[(*j)].out, STDOUT_FILENO);
 	else if ((*j) != pipn)
 		dup2(((*fd)[(*j)])[1], STDOUT_FILENO);
-	if (t_glob->t_cmnds[(*j)].inp != 0)
-		dup2(t_glob->t_cmnds[(*j)].inp, 0);
+	if (g_glob->t_cmnds[(*j)].inp != 0)
+		dup2(g_glob->t_cmnds[(*j)].inp, 0);
 	else if ((*j) != 0)
 		dup2(((*fd)[(*j) - 1])[0], STDIN_FILENO);
 	i = 0;

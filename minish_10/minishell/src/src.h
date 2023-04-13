@@ -19,16 +19,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <fcntl.h>
+# include <string.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include "../inc/builtins.h"
 # include <termios.h>
 
 int		ft_strchr_indx(const char *s, int c);
 char	**split2(char const *s, char *c, int cmdi);
-void	define_signals();
+void	define_signals(void);
 int		c_check(char const *s, int idx, char *c);
 void	free_ar(void **spl);
 void	search(char **name, char *pth);
@@ -48,14 +48,14 @@ char	*remove_quotes(int size, char *str);
 char	*replace(char *str_z, int single_quote);
 char	*ft_get_env(char *env_name, int dlr);
 void	ignore_signals(void);
-void 	reprompt(int sig);
+void	reprompt(int sig);
 int		new_size(char *str);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 int		heredoc(char *delimiter);
 void	ignore_symbols(void);
-void	define_signals();
-void 	reprompt(int sig);
+void	define_signals(void);
+void	reprompt(int sig);
 void	my_waitpid(pid_t pid);
 char	*pipfin(char *t);
 int		ft_chrcnt(char *str, char chr);
@@ -74,6 +74,5 @@ void	m_pipe_p5_fr1(int pipn, int ***fd, char **txt, int **pid);
 void	main2(char *txt);
 char	*nxt_pipe(char *str);
 void	redir(char const *s, char *c, int *x, int cmdi);
-
 
 #endif

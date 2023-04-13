@@ -25,7 +25,6 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (s[i] == (char)c)
 	{
-		// printf("puk =>%c; =>%s\n", s[i], s);
 		return ((char *)&s[i]);
 	}
 	return (NULL);

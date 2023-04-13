@@ -21,17 +21,17 @@ void	my_waitpid(pid_t pid)
 
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
-		t_glob->exit_status = WEXITSTATUS(status);
+		g_glob->exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 	{
-		t_glob->exit_status = 128 + WTERMSIG(status);
-		if (t_glob->exit_status == 130)
+		g_glob->exit_status = 128 + WTERMSIG(status);
+		if (g_glob->exit_status == 130)
 			ft_putstr_fd("\n", 2);
-		else if (t_glob->exit_status == 131)
+		else if (g_glob->exit_status == 131)
 			ft_putstr_fd("Quit: 3\n", 2);
 	}
 	else
-		t_glob->exit_status = status;
+		g_glob->exit_status = status;
 }
 
 void	ignore_symbols(void)
@@ -45,6 +45,8 @@ void	ignore_symbols(void)
 		perror("minishell: tcsetattr");
 }
 
+// rl_replace_line("", 0);
+
 void	reprompt(int sig)
 {
 	(void)sig;
@@ -53,7 +55,7 @@ void	reprompt(int sig)
 	ignore_symbols();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	t_glob->exit_status = 1;
+	g_glob->exit_status = 1;
 }
 
 void	define_signals(void)

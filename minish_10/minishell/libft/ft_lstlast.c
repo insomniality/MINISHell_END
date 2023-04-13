@@ -13,19 +13,9 @@
 #include "libft.h"
 #include <stdio.h>
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	while (lst && lst->next)
- 		lst = lst->next;
+		lst = lst->next;
 	return (lst);
 }
-// int main()
-// {
-// 	t_list *a = malloc(sizeof(t_list));
-// 	a->next = NULL;
-
-// 	t_list *b = malloc(sizeof(t_list));
-// 	b->next = a;
-
-// 	printf("%p\n", ft_lstlast(b));
-// }

@@ -76,7 +76,7 @@ void	search_p4(char **name, char *pth, int *i, char ***pts)
 		ft_putstr_fd("-bash: ", 2);
 		ft_putstr_fd(*name, 2);
 		ft_putstr_fd(": command not found\n", 2);
-		t_glob->exit_status = 127;
+		g_glob->exit_status = 127;
 		exit(127);
 	}
 }

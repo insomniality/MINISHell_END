@@ -55,7 +55,7 @@ void	m_pipe_p2(int pipn, char **txt, char **txt2, char ***m_argv)
 			(*m_argv) = split2((*txt2), " 	", j);
 		free((*txt2));
 		lowerc(&(*m_argv));
-		t_glob->t_cmnds[j].cmd = (*m_argv);
+		g_glob->t_cmnds[j].cmd = (*m_argv);
 		if (j++ != pipn)
 		{
 			(*txt2) = (*txt);
@@ -70,12 +70,12 @@ void	m_pipe_p1(int pipn, char **txt, char **txt2, int ***fd)
 {
 	int	i;
 
-	t_glob->t_cmnds = (t_cmds *)malloc(sizeof(t_cmds) * (pipn + 1));
+	g_glob->t_cmnds = (t_cmds *)malloc(sizeof(t_cmds) * (pipn + 1));
 	i = 0;
 	while (i <= pipn)
 	{
-		t_glob->t_cmnds[i].inp = 0;
-		t_glob->t_cmnds[i++].out = 1;
+		g_glob->t_cmnds[i].inp = 0;
+		g_glob->t_cmnds[i++].out = 1;
 	}
 	(*txt2) = pipfin((*txt));
 	free((*txt));
@@ -110,7 +110,7 @@ void	*m_pipe(int pipn, char *txt)
 			m_pipe_p3_f1(pipn, &j, &fd);
 			m_pipe_p3_f2(pipn, &j);
 		}
-		free_ar((void **)t_glob->t_cmnds[j++].cmd);
+		free_ar((void **)g_glob->t_cmnds[j++].cmd);
 	}
 	m_pipe_p4_c1(pipn, &fd);
 	m_pipe_p5_fr1(pipn, &fd, &txt, &pid);

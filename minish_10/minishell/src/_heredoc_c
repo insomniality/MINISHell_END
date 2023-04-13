@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split4.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mikarzum <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/10 19:01:05 by mikarzum          #+#    #+#             */
+/*   Updated: 2023/02/10 19:01:10 by mikarzum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../libft/libft.h"
+#include "src.h"
+
+// char	*hd_nm_join(char **nms)
+// {
+// 	int		i;
+// }
+
+
+
+void	heredoc()
+{
+	char	*txt;
+	char	*big;
+	int		txt_len;
+	int		i;
+	int		fd[2];
+
+
+	i = 0;
+	pipe(fd);
+	while (1)
+	{
+		txt = readline("> ");
+		txt_len = ft_strlen(txt);
+
+		// big = ft_st
+		if (ft_strncmp(txt, t_glob->t_cmnds[].hd_names[i], txt_len) == 0)
+		{
+			i++;
+		}
+
+		
+		if (i == t_glob->t_cmnds[].hd_amount)
+		{
+			break ;
+		}
+		free(txt);
+	}
+	close(fd[0]);
+	close(fd[1]);
+}

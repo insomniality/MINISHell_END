@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		"src.h": "c",
+		"history.h": "c",
+		"readline.h": "c",
+		"builtins.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c",
+		"queue": "c",
+		"random": "c",
+		"__availability": "c",
+		"bitset": "c",
+		"locale": "c",
+		"libft.h": "c",
+		"errno.h": "c"
+	}
+}
